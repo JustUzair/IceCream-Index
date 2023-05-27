@@ -14,7 +14,7 @@ const Navbar = () => {
           margin: "0 auto !important",
         }}
       >
-        <Link href="/" className="nav__logo">
+        <Link href="/" className="nav__logo" passHref>
           <p>
             <img src={icecream.src} className="pumpkin_icon" alt="icecream" />
             IceCream-Index
