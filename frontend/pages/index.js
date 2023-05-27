@@ -86,13 +86,13 @@ export default function Home() {
                   y2="338.5"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#08060B" stop-opacity="0.2"></stop>
+                  <stop stopColor="#08060B" stopOpacity="0.2"></stop>
                   <stop
                     offset="0.545554"
-                    stop-color="#08060B"
-                    stop-opacity="0.5"
+                    stopColor="#08060B"
+                    stopOpacity="0.5"
                   ></stop>
-                  <stop offset="1" stop-color="#08060B"></stop>
+                  <stop offset="1" stopColor="#08060B"></stop>
                 </linearGradient>
               </defs>
             </svg>

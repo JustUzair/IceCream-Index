@@ -340,6 +340,7 @@ const CreateIndexToken = () => {
             <div className="token-label--container">
               <label className="token-label">
                 <img
+                  alt="icecream"
                   src="https://seeklogo.com/images/U/usd-coin-usdc-logo-CB4C5B1C51-seeklogo.com.png"
                   className="crypto_icon"
                 />
@@ -368,6 +369,7 @@ const CreateIndexToken = () => {
               <label className="token-label">
                 {" "}
                 <img
+                  alt="icecream"
                   src="https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.png"
                   className="crypto_icon"
                 />
@@ -396,6 +398,7 @@ const CreateIndexToken = () => {
               <label className="token-label">
                 {" "}
                 <img
+                  alt="icecream"
                   src="https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png"
                   className="crypto_icon"
                 />
@@ -424,6 +427,7 @@ const CreateIndexToken = () => {
               <label className="token-label">
                 {" "}
                 <img
+                  alt="icecream"
                   src="https://cryptologos.cc/logos/fantom-ftm-logo.png"
                   className="crypto_icon"
                 />
@@ -452,6 +456,7 @@ const CreateIndexToken = () => {
               <label className="token-label">
                 {" "}
                 <img
+                  alt="icecream"
                   src="https://cryptologos.cc/logos/aave-aave-logo.png"
                   className="crypto_icon"
                 />
@@ -487,6 +492,7 @@ const CreateIndexToken = () => {
                 <label className="token-label">
                   {" "}
                   <img
+                    alt="icecream"
                     src="https://seeklogo.com/images/U/usd-coin-usdc-logo-CB4C5B1C51-seeklogo.com.png"
                     className="crypto_icon"
                   />
@@ -506,6 +512,7 @@ const CreateIndexToken = () => {
                 <label className="token-label">
                   {" "}
                   <img
+                    alt="icecream"
                     src="https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.png"
                     className="crypto_icon"
                   />
@@ -525,6 +532,7 @@ const CreateIndexToken = () => {
                 <label className="token-label">
                   {" "}
                   <img
+                    alt="icecream"
                     src="https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png"
                     className="crypto_icon"
                   />
@@ -544,6 +552,7 @@ const CreateIndexToken = () => {
                 <label className="token-label">
                   {" "}
                   <img
+                    alt="icecream"
                     src="https://cryptologos.cc/logos/fantom-ftm-logo.png"
                     className="crypto_icon"
                   />
@@ -563,6 +572,7 @@ const CreateIndexToken = () => {
                 <label className="token-label">
                   {" "}
                   <img
+                    alt="icecream"
                     src="https://cryptologos.cc/logos/aave-aave-logo.png"
                     className="crypto_icon"
                   />

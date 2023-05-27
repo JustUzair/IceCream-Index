@@ -194,6 +194,7 @@ const ViewTokens = () => {
                   <br />
                   <div className="view-token--buttons">
                     <Link
+                      passHref
                       href={{
                         pathname: `/tokens/${item}/redeem`,
                       }}
@@ -224,6 +225,7 @@ const ViewTokens = () => {
                     </Link>
 
                     <Link
+                      passHref
                       href={{
                         pathname: `/tokens/${item}/issue-token`,
                       }}
@@ -249,6 +251,7 @@ const ViewTokens = () => {
                       </Button>
                     </Link>
                     <Link
+                      passHref
                       href={{
                         pathname: `/tokens/${item}/rebalance`,
                       }}
@@ -275,6 +278,7 @@ const ViewTokens = () => {
                       </Button>
                     </Link>
                     <Link
+                      passHref
                       href={{
                         pathname: `/tokens/${item}/claim-fee`,
                       }}
