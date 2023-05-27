@@ -1,0 +1,20 @@
+{
+  "4002": {
+    "USDC": ["0x73778d5569E3798360C0F557CeB549092759A029"],
+    "WETH": ["0x31bF40f5642BCC6d41f28cccB2ADFB735722Bb30"],
+    "WBTC": ["0x7FA0D30b30aF032bd1d8453603D7Df948021eA60"],
+    "WFTM": ["0xeF35e201aaBEFe47Ff3e01c87ef6D35878588B0C"],
+    "AAVE": ["0x415cE4e20bD34F9620a926db1B6a9ca08424FCdb"],
+    "UnderlyingFaucet": ["0x853Ec3E1976Dc7eA7B478d1c1dEB1974B319Fd3c"],
+    "PumpkinAddress": ["0x89d25B5Dd46Faab9D4cF506ae46675B6E6180546"]
+  },
+  "51": {
+    "USDC": [],
+    "WETH": [],
+    "WBTC": [],
+    "WFTM": [],
+    "AAVE": [],
+    "UnderlyingFaucet": [],
+    "PumpkinAddress": []
+  }
+}
