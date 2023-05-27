@@ -51,6 +51,7 @@ const about = () => {
               width: "512px",
             }}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/iceconea.png"
               alt="ice-cream--cone"
@@ -62,6 +63,7 @@ const about = () => {
                 objectFit: "fill",
               }}
             />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/iceconeb.png"
               alt="ice-cream--cone"
