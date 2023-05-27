@@ -24,7 +24,7 @@ const xdcTestnetChain = {
 
   rpcUrls: {
     default: {
-      http: ["https://rpc.apothem.network"],
+      http: ["https://erpc.apothem.network"],
     },
   },
   blockExplorers: {
