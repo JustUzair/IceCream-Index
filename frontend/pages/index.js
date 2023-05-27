@@ -1,11 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import { Button } from "@mantine/core";
-import heroHome from "../public/images/hero-home.png";
-import coneA from "../public/images/iceconea.png";
-import coneB from "../public/images/iceconeB.png";
-import ice from "../public/images/ice.png";
-import token from "../public/images/tokens.png";
 
 export default function Home() {
   return (
@@ -21,7 +16,11 @@ export default function Home() {
             <div className="home__content grid">
               <div className="home__group">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={heroHome.src} alt="icecream" className="home__img" />
+                <img
+                  src={"/images/hero-home.png"}
+                  alt="icecream"
+                  className="home__img"
+                />
                 <div className="home__indicator"></div>
                 <div className="home__details-img">
                   <h4 className="home__details-title">
@@ -127,16 +126,13 @@ export default function Home() {
               by Sector{" "}
             </h1>
             <div className="category__container container grid">
-              {/* 
-                
-                coneA
-                coneB
-                ice
-                token
-*/}
               <div className="category__data">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={coneA.src} alt="icecream" className="category__img" />
+                <img
+                  src={"/images/iceconea.png"}
+                  alt="icecream"
+                  className="category__img"
+                />
                 <h3 className="category__title">Metaverse Index</h3>
                 <p className="category__description">
                   Composition: APE, ICP, STX, MANA, THETA, AXS, SAND
@@ -144,7 +140,11 @@ export default function Home() {
               </div>
               <div className="category__data">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ice.src} alt="icecream" className="category__img" />
+                <img
+                  src={"/images/ice.png"}
+                  alt="icecream"
+                  className="category__img"
+                />
                 <h3 className="category__title">DeFi Pulse Index</h3>
                 <p className="category__description">
                   Composition: UNI, LINK, MKR, FXS, SNX, CAKE, CRV, CVX, DYDX,
@@ -153,7 +153,11 @@ export default function Home() {
               </div>
               <div className="category__data">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={token.src} alt="icecream" className="category__img" />
+                <img
+                  src={"/images/tokens.png"}
+                  alt="icecream"
+                  className="category__img"
+                />
                 <h3 className="category__title">Liquid Staking Index</h3>
                 <p className="category__description">
                   STETH, RETH, FRXETH, MSOL, SAVAX, AKRETH
@@ -187,7 +191,7 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               //   src="https://assets.codepen.io/7773162/about-img.png"
-              src={ice.src}
+              src={"/images/ice.png"}
               alt="icecream"
               className="about__img"
             />
@@ -212,7 +216,7 @@ export default function Home() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={coneA.src}
+                src={"/images/iceconea.png"}
                 alt="icecream"
                 className="about__img"
                 style={{
@@ -224,7 +228,7 @@ export default function Home() {
               />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={coneB.src}
+                src={"/images/iceconeb.png"}
                 alt="icecream"
                 className="about__img"
                 style={{

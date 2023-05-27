@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 // import Image from "next/image";
-import icecream from "../public/images/icecream.png";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 const Navbar = () => {
   useEffect(() => {}, []);
@@ -17,7 +16,11 @@ const Navbar = () => {
         <Link href="/" className="nav__logo" passHref>
           <p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={icecream.src} className="pumpkin_icon" alt="icecream" />
+            <img
+              src={"/images/icecream.png"}
+              className="pumpkin_icon"
+              alt="icecream"
+            />
             IceCream-Index
           </p>
         </Link>
