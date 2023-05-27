@@ -413,6 +413,7 @@ button {
 }
 .category__img {
   width: 120px;
+  height: 250px;
   margin-bottom: var(--mb-0-75);
   transition: 0.3s;
 }
