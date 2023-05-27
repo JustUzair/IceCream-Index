@@ -52,7 +52,7 @@ const about = () => {
             }}
           >
             <img
-              src={coneA.src}
+              src="/images/iceconea.png"
               alt="ice-cream--cone"
               className="about__img"
               style={{
@@ -63,7 +63,7 @@ const about = () => {
               }}
             />
             <img
-              src={coneB.src}
+              src="/images/iceconeb.png"
               alt="ice-cream--cone"
               className="about__img"
               style={{
