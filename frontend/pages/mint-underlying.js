@@ -83,7 +83,7 @@ const MintUnderlying = () => {
       params: {
         abi: UtilityTokenABI,
         contractAddress: UnderlyingTokenFaucetAddress, // specify the networkId
-        functionName: "mintAllTokens",
+        functionName: "mintTester",
         params: {},
       },
       onError: error => {
@@ -124,7 +124,7 @@ const MintUnderlying = () => {
             }}
           >
             {" "}
-            The utility token represents mock tokens for USDC, WETH, WBTC, WFTM,
+            The utility token represents mock tokens for USDC, WETH, WBTC, FTM,
             AAVE
           </h4>
         </fieldset>
@@ -215,7 +215,7 @@ const MintUnderlying = () => {
                       color: "#ffc700",
                     }}
                   >
-                    WFTM
+                    FTM
                   </span>{" "}
                   -{" "}
                   <span

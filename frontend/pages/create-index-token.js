@@ -6,7 +6,7 @@ import { ethers } from "ethers";
 import ERC20_ABI from "../constants/ERC20_ABI";
 import PUMPKIN_ABI from "../constants/PUMPKIN_ABI";
 import { useMoralis, useWeb3Contract } from "react-moralis";
-import { PumpkinAddress } from "../constants/PumpkinAddress";
+import contractAddresses from "../constants/networkMappings.json";
 import { useNotification } from "web3uikit";
 import { useRouter } from "next/router";
 
@@ -17,8 +17,19 @@ const CreateIndexToken = () => {
   const router = useRouter();
   const dispatch = useNotification();
   const { runContractFunction } = useWeb3Contract();
-  const { enableWeb3, authenticate, chainId, account, isWeb3Enabled } =
+
+  const { enableWeb3, authenticate, account, isWeb3Enabled, Moralis } =
     useMoralis();
+
+  const { chainId: chainIdHex } = useMoralis();
+  const chainId = parseInt(chainIdHex);
+
+  const PumpkinAddress =
+    chainId in contractAddresses
+      ? contractAddresses[chainId]["PumpkinAddress"][
+          contractAddresses[chainId]["PumpkinAddress"].length - 1
+        ]
+      : null;
   const [coinPriceData, setCoinPriceData] = useState({});
   const [timestamp, setTimestamp] = useState(Date.now());
   //   const [approxTokenPrice, setApproxTokenPrice] = useState(0);
@@ -32,11 +43,43 @@ const CreateIndexToken = () => {
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");
 
-  const USDCAddress = "0x73778d5569E3798360C0F557CeB549092759A029";
-  const WETHAddress = "0x31bF40f5642BCC6d41f28cccB2ADFB735722Bb30";
-  const WBTCAddress = "0x7FA0D30b30aF032bd1d8453603D7Df948021eA60";
-  const WFTMAddress = "0xeF35e201aaBEFe47Ff3e01c87ef6D35878588B0C";
-  const AAVEAddress = "0x415cE4e20bD34F9620a926db1B6a9ca08424FCdb";
+  const UnderlyingTokenFaucetAddress =
+    chainId in contractAddresses
+      ? contractAddresses[chainId]["UnderlyingFaucet"][
+          contractAddresses[chainId]["UnderlyingFaucet"].length - 1
+        ]
+      : null;
+
+  const USDCAddress =
+    chainId in contractAddresses
+      ? contractAddresses[chainId]["USDC"][
+          contractAddresses[chainId]["USDC"].length - 1
+        ]
+      : null;
+  const WETHAddress =
+    chainId in contractAddresses
+      ? contractAddresses[chainId]["WETH"][
+          contractAddresses[chainId]["WETH"].length - 1
+        ]
+      : null;
+  const WBTCAddress =
+    chainId in contractAddresses
+      ? contractAddresses[chainId]["WBTC"][
+          contractAddresses[chainId]["WBTC"].length - 1
+        ]
+      : null;
+  const WFTMAddress =
+    chainId in contractAddresses
+      ? contractAddresses[chainId]["WFTM"][
+          contractAddresses[chainId]["WFTM"].length - 1
+        ]
+      : null;
+  const AAVEAddress =
+    chainId in contractAddresses
+      ? contractAddresses[chainId]["AAVE"][
+          contractAddresses[chainId]["AAVE"].length - 1
+        ]
+      : null;
 
   const successNotification = msg => {
     dispatch({
@@ -112,10 +155,14 @@ const CreateIndexToken = () => {
         failureNotification(error.message);
         console.log(error);
       },
-      onSuccess: data => {
+      onSuccess: async data => {
         console.log(data);
+        successNotification(
+          `TX : ${data.hash} submitted (View on Block Explorer)`
+        );
+        await data.wait(1);
         successNotification(`Index Token Created`);
-        router.push("/view-tokens");
+        router.push(`/tokens`);
       },
     });
   };
@@ -283,237 +330,93 @@ const CreateIndexToken = () => {
       alert(err.message);
     }
   }, []);
-
+  useEffect(() => {
+    enableWeb3();
+    authenticate();
+  }, []);
   return (
     <>
-      <div className="index-token--container">
-        <fieldset>
-          <legend>Create an Index Token</legend>
-          <h3>
-            ✨ Create your own index token. Define its name, the symbol, and
-            percentages of each asset.
-          </h3>
-          <br />
-        </fieldset>
-        <fieldset>
-          <legend>Token Info</legend>
-          <div className="index-token">
-            <div className="token-label--container">
-              <label className="token-name--label">Token Name - </label>
+      {PumpkinAddress != null ? (
+        <div className="index-token--container">
+          <fieldset>
+            <legend>Create an Index Token</legend>
+            <h3>
+              ✨ Create your own index token. Define its name, the symbol, and
+              percentages of each asset.
+            </h3>
+            <br />
+          </fieldset>
+          <fieldset>
+            <legend>Token Info</legend>
+            <div className="index-token">
+              <div className="token-label--container">
+                <label className="token-name--label">Token Name - </label>
+              </div>
+              <div className="token-slider">
+                <input
+                  required
+                  type="text"
+                  className="token-name"
+                  id="token-name"
+                  placeholder="Awesome Index"
+                  onChange={e => {
+                    setTokenName(e.target.value);
+                  }}
+                />
+              </div>
             </div>
-            <div className="token-slider">
-              <input
-                required
-                type="text"
-                className="token-name"
-                id="token-name"
-                placeholder="Awesome Index"
-                onChange={e => {
-                  setTokenName(e.target.value);
-                }}
-              />
+            <div className="index-token">
+              <div className="token-label--container">
+                <label className="token-name--label">Token Symbol - </label>
+              </div>
+              <div className="token-slider">
+                <input
+                  required
+                  type="text"
+                  className="token-symbol"
+                  id="token-name"
+                  placeholder="AWSM"
+                  onChange={e => {
+                    setTokenSymbol(e.target.value);
+                  }}
+                />
+              </div>
             </div>
-          </div>
-          <div className="index-token">
-            <div className="token-label--container">
-              <label className="token-name--label">Token Symbol - </label>
-            </div>
-            <div className="token-slider">
-              <input
-                required
-                type="text"
-                className="token-symbol"
-                id="token-name"
-                placeholder="AWSM"
-                onChange={e => {
-                  setTokenSymbol(e.target.value);
-                }}
-              />
-            </div>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Index Token Percentage</legend>
+          </fieldset>
+          <fieldset>
+            <legend>Index Token Percentage</legend>
 
-          {/* USDC */}
-          <div className="underlying-token">
-            <div className="token-label--container">
-              <label className="token-label">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  alt="icecream"
-                  src="https://seeklogo.com/images/U/usd-coin-usdc-logo-CB4C5B1C51-seeklogo.com.png"
-                  className="crypto_icon"
-                />
-                USDC
-              </label>
-            </div>
-            <div className="token-slider">
-              <input
-                required
-                type="range"
-                className="depend"
-                min="0"
-                max="100"
-                value={usdc}
-                step="1"
-                onChange={handleChange}
-                id="usdc"
-              />
-              <label id="usdc_percentage">{usdc}</label>%
-            </div>
-          </div>
-          <br />
-          {/* WBTC */}
-          <div className="underlying-token">
-            <div className="token-label--container">
-              <label className="token-label">
-                {" "}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  alt="icecream"
-                  src="https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.png"
-                  className="crypto_icon"
-                />
-                WBTC
-              </label>
-            </div>
-            <div className="token-slider">
-              <input
-                required
-                type="range"
-                className="depend"
-                min="0"
-                max="100"
-                value={wbtc}
-                step="1"
-                onChange={handleChange}
-                id="wbtc"
-              />
-              <label id="wbtc_percentage">{wbtc}</label>%
-            </div>
-          </div>
-          <br />
-          {/* WETH */}
-          <div className="underlying-token">
-            <div className="token-label--container">
-              <label className="token-label">
-                {" "}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  alt="icecream"
-                  src="https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png"
-                  className="crypto_icon"
-                />
-                WETH
-              </label>
-            </div>
-            <div className="token-slider">
-              <input
-                required
-                type="range"
-                className="depend"
-                min="0"
-                max="100"
-                value={weth}
-                step="1"
-                onChange={handleChange}
-                id="weth"
-              />
-              <label id="weth_percentage">{weth}</label>%
-            </div>
-          </div>
-          <br />
-          {/* WFTM */}
-          <div className="underlying-token">
-            <div className="token-label--container">
-              <label className="token-label">
-                {" "}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  alt="icecream"
-                  src="https://cryptologos.cc/logos/fantom-ftm-logo.png"
-                  className="crypto_icon"
-                />
-                WFTM
-              </label>
-            </div>
-            <div className="token-slider">
-              <input
-                required
-                type="range"
-                className="depend"
-                min="0"
-                max="100"
-                value={wftm}
-                step="1"
-                onChange={handleChange}
-                id="wftm"
-              />
-              <label id="wftm_percentage">{wftm}</label>%
-            </div>
-          </div>
-          <br />
-          {/* AAVE */}
-          <div className="underlying-token">
-            <div className="token-label--container">
-              <label className="token-label">
-                {" "}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  alt="icecream"
-                  src="https://cryptologos.cc/logos/aave-aave-logo.png"
-                  className="crypto_icon"
-                />
-                AAVE
-              </label>
-            </div>
-            <div className="token-slider">
-              <input
-                required
-                type="range"
-                className="depend"
-                min="0"
-                max="100"
-                value={aave}
-                step="1"
-                onChange={handleChange}
-                id="aave"
-              />
-              <label id="aave_percentage">{aave}</label>%
-            </div>
-          </div>
-          <br />
-
-          <br />
-        </fieldset>
-
-        <fieldset>
-          <legend>Token Action</legend>
-
-          <div className="approx-token-price--container">
-            <div className="underlying-token--price">
+            {/* USDC */}
+            <div className="underlying-token">
               <div className="token-label--container">
                 <label className="token-label">
-                  {" "}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     alt="icecream"
                     src="https://seeklogo.com/images/U/usd-coin-usdc-logo-CB4C5B1C51-seeklogo.com.png"
                     className="crypto_icon"
                   />
+                  USDC
                 </label>
-                USDC <span className="approx-symbol">~</span>
               </div>
-              <span className="token-ratio--price">
-                $
-                {(
-                  (usdc / 100) *
-                  parseFloat(coinPriceData[tokenSymbolAddress.usdc.id]?.usd)
-                ).toFixed(2)}
-              </span>
+              <div className="token-slider">
+                <input
+                  required
+                  type="range"
+                  className="depend"
+                  min="0"
+                  max="100"
+                  value={usdc}
+                  step="1"
+                  onChange={handleChange}
+                  id="usdc"
+                />
+                <label id="usdc_percentage">{usdc}</label>%
+              </div>
             </div>
-            <div className="underlying-token--price">
+            <br />
+            {/* WBTC */}
+            <div className="underlying-token">
               <div className="token-label--container">
                 <label className="token-label">
                   {" "}
@@ -523,18 +426,27 @@ const CreateIndexToken = () => {
                     src="https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.png"
                     className="crypto_icon"
                   />
+                  WBTC
                 </label>
-                WBTC <span className="approx-symbol">~</span>
               </div>
-              <span className="token-ratio--price">
-                $
-                {(
-                  (wbtc / 100) *
-                  parseFloat(coinPriceData[tokenSymbolAddress.wbtc.id]?.usd)
-                ).toFixed(2)}
-              </span>
+              <div className="token-slider">
+                <input
+                  required
+                  type="range"
+                  className="depend"
+                  min="0"
+                  max="100"
+                  value={wbtc}
+                  step="1"
+                  onChange={handleChange}
+                  id="wbtc"
+                />
+                <label id="wbtc_percentage">{wbtc}</label>%
+              </div>
             </div>
-            <div className="underlying-token--price">
+            <br />
+            {/* WETH */}
+            <div className="underlying-token">
               <div className="token-label--container">
                 <label className="token-label">
                   {" "}
@@ -544,18 +456,27 @@ const CreateIndexToken = () => {
                     src="https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png"
                     className="crypto_icon"
                   />
+                  WETH
                 </label>
-                WETH <span className="approx-symbol">~</span>
               </div>
-              <span className="token-ratio--price">
-                $
-                {(
-                  (weth / 100) *
-                  parseFloat(coinPriceData[tokenSymbolAddress.weth.id]?.usd)
-                ).toFixed(2)}
-              </span>
+              <div className="token-slider">
+                <input
+                  required
+                  type="range"
+                  className="depend"
+                  min="0"
+                  max="100"
+                  value={weth}
+                  step="1"
+                  onChange={handleChange}
+                  id="weth"
+                />
+                <label id="weth_percentage">{weth}</label>%
+              </div>
             </div>
-            <div className="underlying-token--price">
+            <br />
+            {/* WFTM */}
+            <div className="underlying-token">
               <div className="token-label--container">
                 <label className="token-label">
                   {" "}
@@ -565,18 +486,27 @@ const CreateIndexToken = () => {
                     src="https://cryptologos.cc/logos/fantom-ftm-logo.png"
                     className="crypto_icon"
                   />
+                  WFTM
                 </label>
-                WFTM <span className="approx-symbol">~</span>
               </div>
-              <span className="token-ratio--price">
-                $
-                {(
-                  (wftm / 100) *
-                  parseFloat(coinPriceData[tokenSymbolAddress.wftm.id]?.usd)
-                ).toFixed(2)}
-              </span>
+              <div className="token-slider">
+                <input
+                  required
+                  type="range"
+                  className="depend"
+                  min="0"
+                  max="100"
+                  value={wftm}
+                  step="1"
+                  onChange={handleChange}
+                  id="wftm"
+                />
+                <label id="wftm_percentage">{wftm}</label>%
+              </div>
             </div>
-            <div className="underlying-token--price">
+            <br />
+            {/* AAVE */}
+            <div className="underlying-token">
               <div className="token-label--container">
                 <label className="token-label">
                   {" "}
@@ -586,40 +516,192 @@ const CreateIndexToken = () => {
                     src="https://cryptologos.cc/logos/aave-aave-logo.png"
                     className="crypto_icon"
                   />
+                  AAVE
                 </label>
-                AAVE <span className="approx-symbol">~</span>
               </div>
-              <span className="token-ratio--price">
-                $
-                {(
-                  (aave / 100) *
-                  parseFloat(coinPriceData[tokenSymbolAddress.aave.id]?.usd)
-                ).toFixed(2)}
-              </span>
+              <div className="token-slider">
+                <input
+                  required
+                  type="range"
+                  className="depend"
+                  min="0"
+                  max="100"
+                  value={aave}
+                  step="1"
+                  onChange={handleChange}
+                  id="aave"
+                />
+                <label id="aave_percentage">{aave}</label>%
+              </div>
             </div>
             <br />
-            Approx Value in USD ~{" "}
-            <span>${calculateIndexTokenPrice().toFixed(2)}</span>
+
             <br />
-            <Button variant="light" color="indigo" onClick={createTokenWeb3}>
-              <span
-                className="create-token--btn"
-                style={{
-                  fontSize: "1.5rem",
-                  textDecoration: "none !important",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <IoIosCreate></IoIosCreate>
-                Create Token
-              </span>
-            </Button>
+          </fieldset>
+
+          <fieldset>
+            <legend>Token Action</legend>
+
+            <div className="approx-token-price--container">
+              <div className="underlying-token--price">
+                <div className="token-label--container">
+                  <label className="token-label">
+                    {" "}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      alt="icecream"
+                      src="https://seeklogo.com/images/U/usd-coin-usdc-logo-CB4C5B1C51-seeklogo.com.png"
+                      className="crypto_icon"
+                    />
+                  </label>
+                  USDC <span className="approx-symbol">~</span>
+                </div>
+                <span className="token-ratio--price">
+                  $
+                  {(
+                    (usdc / 100) *
+                    parseFloat(coinPriceData[tokenSymbolAddress.usdc.id]?.usd)
+                  ).toFixed(2)}
+                </span>
+              </div>
+              <div className="underlying-token--price">
+                <div className="token-label--container">
+                  <label className="token-label">
+                    {" "}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      alt="icecream"
+                      src="https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.png"
+                      className="crypto_icon"
+                    />
+                  </label>
+                  WBTC <span className="approx-symbol">~</span>
+                </div>
+                <span className="token-ratio--price">
+                  $
+                  {(
+                    (wbtc / 100) *
+                    parseFloat(coinPriceData[tokenSymbolAddress.wbtc.id]?.usd)
+                  ).toFixed(2)}
+                </span>
+              </div>
+              <div className="underlying-token--price">
+                <div className="token-label--container">
+                  <label className="token-label">
+                    {" "}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      alt="icecream"
+                      src="https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png"
+                      className="crypto_icon"
+                    />
+                  </label>
+                  WETH <span className="approx-symbol">~</span>
+                </div>
+                <span className="token-ratio--price">
+                  $
+                  {(
+                    (weth / 100) *
+                    parseFloat(coinPriceData[tokenSymbolAddress.weth.id]?.usd)
+                  ).toFixed(2)}
+                </span>
+              </div>
+              <div className="underlying-token--price">
+                <div className="token-label--container">
+                  <label className="token-label">
+                    {" "}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      alt="icecream"
+                      src="https://cryptologos.cc/logos/fantom-ftm-logo.png"
+                      className="crypto_icon"
+                    />
+                  </label>
+                  FTM <span className="approx-symbol">~</span>
+                </div>
+                <span className="token-ratio--price">
+                  $
+                  {(
+                    (wftm / 100) *
+                    parseFloat(coinPriceData[tokenSymbolAddress.wftm.id]?.usd)
+                  ).toFixed(2)}
+                </span>
+              </div>
+              <div className="underlying-token--price">
+                <div className="token-label--container">
+                  <label className="token-label">
+                    {" "}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      alt="icecream"
+                      src="https://cryptologos.cc/logos/aave-aave-logo.png"
+                      className="crypto_icon"
+                    />
+                  </label>
+                  AAVE <span className="approx-symbol">~</span>
+                </div>
+                <span className="token-ratio--price">
+                  $
+                  {(
+                    (aave / 100) *
+                    parseFloat(coinPriceData[tokenSymbolAddress.aave.id]?.usd)
+                  ).toFixed(2)}
+                </span>
+              </div>
+              <br />
+              Approx Value in USD ~{" "}
+              <span>${calculateIndexTokenPrice().toFixed(2)}</span>
+              <br />
+              <Button variant="dark" color="indigo" onClick={createTokenWeb3}>
+                <span
+                  className="create-token--btn"
+                  style={{
+                    fontSize: "1.5rem",
+                    textDecoration: "none !important",
+                    display: "flex",
+                    color: "white",
+                    alignItems: "center",
+                  }}
+                >
+                  <IoIosCreate></IoIosCreate>
+                  Create Token
+                </span>
+              </Button>
+              <br />
+            </div>
             <br />
+          </fieldset>
+        </div>
+      ) : (
+        <>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "80%",
+              height: "100%",
+              zIndex: "99",
+              color: "white",
+              fontSize: "2rem",
+              wordWrap: "break-word",
+              margin: "0 auto",
+              padding: " 50px 10px",
+              marginTop: "236px",
+            }}
+          >
+            <span
+              style={{
+                background: "#FF494A",
+                padding: "10px 25px",
+                borderRadius: "20px",
+              }}
+            >
+              No contract found on this network!!!
+            </span>
           </div>
-          <br />
-        </fieldset>
-      </div>
+        </>
+      )}
     </>
   );
 };

@@ -122,7 +122,11 @@ const ViewTokens = () => {
   };
   useEffect(() => {
     getIndexTokens();
-  }, [account]);
+  }, [account, chainId]);
+  useEffect(() => {
+    authenticate();
+    enableWeb3();
+  }, []);
   return (
     <>
       <Head>
@@ -154,7 +158,7 @@ const ViewTokens = () => {
           >
             {/* {account} */}
 
-            {tokens.length > 0 &&
+            {tokens.length > 0 ? (
               tokens.map((item, index) => (
                 <motion.div
                   variants={fadeInUp}
@@ -309,7 +313,37 @@ const ViewTokens = () => {
                     </Link>
                   </div>
                 </motion.div>
-              ))}
+              ))
+            ) : (
+              <>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "80%",
+                    height: "100%",
+                    zIndex: "99",
+                    color: "white",
+                    fontSize: "2rem",
+                    wordWrap: "break-word",
+                    margin: "0 auto",
+                    position: "absolute",
+                    top: 0,
+                  }}
+                >
+                  <span
+                    style={{
+                      background: "#FF494A",
+                      padding: "10px 25px",
+                      borderRadius: "20px",
+                    }}
+                  >
+                    No Index Tokens found yet!!
+                  </span>
+                </div>
+              </>
+            )}
           </motion.div>
         </>
       ) : (

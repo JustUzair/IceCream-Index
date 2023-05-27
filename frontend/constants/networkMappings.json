@@ -9,12 +9,12 @@
     "PumpkinAddress": ["0x89d25B5Dd46Faab9D4cF506ae46675B6E6180546"]
   },
   "51": {
-    "USDC": [],
-    "WETH": [],
-    "WBTC": [],
-    "WFTM": [],
-    "AAVE": [],
-    "UnderlyingFaucet": [],
-    "PumpkinAddress": []
+    "USDC": ["0x31bF40f5642BCC6d41f28cccB2ADFB735722Bb30"],
+    "WETH": ["0xeF35e201aaBEFe47Ff3e01c87ef6D35878588B0C"],
+    "WBTC": ["0x73778d5569E3798360C0F557CeB549092759A029"],
+    "WFTM": ["0x415cE4e20bD34F9620a926db1B6a9ca08424FCdb"],
+    "AAVE": ["0x7FA0D30b30aF032bd1d8453603D7Df948021eA60"],
+    "UnderlyingFaucet": ["0xFD0641c1A763caC020549B676299C17352DFEB6D"],
+    "PumpkinAddress": ["0x7a48092b1e0a604873D412aBf8E74b6fD9e305F4"]
   }
 }
