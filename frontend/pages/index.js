@@ -20,6 +20,7 @@ export default function Home() {
           <section className="home container" id="home">
             <div className="home__content grid">
               <div className="home__group">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={heroHome.src} alt="icecream" className="home__img" />
                 <div className="home__indicator"></div>
                 <div className="home__details-img">
@@ -134,6 +135,7 @@ export default function Home() {
                 token
 */}
               <div className="category__data">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={coneA.src} alt="icecream" className="category__img" />
                 <h3 className="category__title">Metaverse Index</h3>
                 <p className="category__description">
@@ -141,6 +143,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="category__data">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={ice.src} alt="icecream" className="category__img" />
                 <h3 className="category__title">DeFi Pulse Index</h3>
                 <p className="category__description">
@@ -149,6 +152,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="category__data">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={token.src} alt="icecream" className="category__img" />
                 <h3 className="category__title">Liquid Staking Index</h3>
                 <p className="category__description">
@@ -180,6 +184,7 @@ export default function Home() {
                 want.{" "}
               </p>
             </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               //   src="https://assets.codepen.io/7773162/about-img.png"
               src={ice.src}
@@ -205,6 +210,7 @@ export default function Home() {
                 width: "300px",
               }}
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={coneA.src}
                 alt="icecream"
@@ -216,6 +222,7 @@ export default function Home() {
                   objectFit: "fill",
                 }}
               />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={coneB.src}
                 alt="icecream"

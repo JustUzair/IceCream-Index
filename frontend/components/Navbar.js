@@ -16,6 +16,7 @@ const Navbar = () => {
       >
         <Link href="/" className="nav__logo" passHref>
           <p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={icecream.src} className="pumpkin_icon" alt="icecream" />
             IceCream-Index
           </p>
@@ -60,6 +61,7 @@ const Navbar = () => {
           <div className="nav__close" id="nav-close">
             <i className="bx bx-x"></i>
           </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="https://assets.codepen.io/7773162/nav-img.png"
             alt="close"

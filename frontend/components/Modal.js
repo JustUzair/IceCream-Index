@@ -253,7 +253,7 @@ const Modal = ({ modal, setModal }) => {
     } catch (err) {
       alert(err.message);
     }
-  }, []);
+  }, [coinPriceData]);
 
   const getUnderlyingTokens = async () => {
     if (!isWeb3Enabled) await enableWeb3();
@@ -470,10 +470,11 @@ const Modal = ({ modal, setModal }) => {
                 </div>
               </div>
               Integrated with SpookySwap{" "}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://styles.redditmedia.com/t5_49ct3d/styles/communityIcon_kwspuvye8at61.png"
                 className="spookyswap_icon"
-                img="icecream"
+                alt="icecream"
               />
               <br />
               <br />

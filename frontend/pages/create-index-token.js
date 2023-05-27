@@ -339,6 +339,7 @@ const CreateIndexToken = () => {
           <div className="underlying-token">
             <div className="token-label--container">
               <label className="token-label">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   alt="icecream"
                   src="https://seeklogo.com/images/U/usd-coin-usdc-logo-CB4C5B1C51-seeklogo.com.png"
@@ -368,6 +369,7 @@ const CreateIndexToken = () => {
             <div className="token-label--container">
               <label className="token-label">
                 {" "}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   alt="icecream"
                   src="https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.png"
@@ -397,6 +399,7 @@ const CreateIndexToken = () => {
             <div className="token-label--container">
               <label className="token-label">
                 {" "}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   alt="icecream"
                   src="https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png"
@@ -426,6 +429,7 @@ const CreateIndexToken = () => {
             <div className="token-label--container">
               <label className="token-label">
                 {" "}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   alt="icecream"
                   src="https://cryptologos.cc/logos/fantom-ftm-logo.png"
@@ -455,6 +459,7 @@ const CreateIndexToken = () => {
             <div className="token-label--container">
               <label className="token-label">
                 {" "}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   alt="icecream"
                   src="https://cryptologos.cc/logos/aave-aave-logo.png"
@@ -491,6 +496,7 @@ const CreateIndexToken = () => {
               <div className="token-label--container">
                 <label className="token-label">
                   {" "}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     alt="icecream"
                     src="https://seeklogo.com/images/U/usd-coin-usdc-logo-CB4C5B1C51-seeklogo.com.png"
@@ -511,6 +517,7 @@ const CreateIndexToken = () => {
               <div className="token-label--container">
                 <label className="token-label">
                   {" "}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     alt="icecream"
                     src="https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.png"
@@ -531,6 +538,7 @@ const CreateIndexToken = () => {
               <div className="token-label--container">
                 <label className="token-label">
                   {" "}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     alt="icecream"
                     src="https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png"
@@ -551,6 +559,7 @@ const CreateIndexToken = () => {
               <div className="token-label--container">
                 <label className="token-label">
                   {" "}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     alt="icecream"
                     src="https://cryptologos.cc/logos/fantom-ftm-logo.png"
@@ -571,6 +580,7 @@ const CreateIndexToken = () => {
               <div className="token-label--container">
                 <label className="token-label">
                   {" "}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     alt="icecream"
                     src="https://cryptologos.cc/logos/aave-aave-logo.png"
