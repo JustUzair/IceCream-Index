@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, routeAnimation, stagger } from "../utils/animations";
 import coneA from "../public/images/iceconea.png";
 import coneB from "../public/images/iceconeB.png";
+import Image from "next/image";
 const about = () => {
   return (
     <>
@@ -52,23 +53,23 @@ const about = () => {
           >
             <img
               src={coneA.src}
-              alt=""
+              alt="ice-cream--cone"
               className="about__img"
               style={{
                 position: "absolute",
-                height: "100%",
                 width: "100%",
+                height: "100%",
                 objectFit: "fill",
               }}
             />
             <img
               src={coneB.src}
-              alt=""
+              alt="ice-cream--cone"
               className="about__img"
               style={{
                 position: "absolute",
-                height: "100%",
                 width: "100%",
+                height: "100%",
                 objectFit: "fill",
               }}
             />
