@@ -16,7 +16,7 @@ const Navbar = () => {
       >
         <Link href="/" className="nav__logo">
           <p>
-            <img src={icecream.src} className="pumpkin_icon" />
+            <img src={icecream.src} className="pumpkin_icon" alt="icecream" />
             IceCream-Index
           </p>
         </Link>
@@ -62,7 +62,7 @@ const Navbar = () => {
           </div>
           <img
             src="https://assets.codepen.io/7773162/nav-img.png"
-            alt=""
+            alt="close"
             className="nav__img"
           />
         </div>

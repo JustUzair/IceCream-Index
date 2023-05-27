@@ -20,7 +20,7 @@ export default function Home() {
           <section className="home container" id="home">
             <div className="home__content grid">
               <div className="home__group">
-                <img src={heroHome.src} alt="" className="home__img" />
+                <img src={heroHome.src} alt="icecream" className="home__img" />
                 <div className="home__indicator"></div>
                 <div className="home__details-img">
                   <h4 className="home__details-title">
@@ -134,14 +134,14 @@ export default function Home() {
                 token
 */}
               <div className="category__data">
-                <img src={coneA.src} alt="" className="category__img" />
+                <img src={coneA.src} alt="icecream" className="category__img" />
                 <h3 className="category__title">Metaverse Index</h3>
                 <p className="category__description">
                   Composition: APE, ICP, STX, MANA, THETA, AXS, SAND
                 </p>
               </div>
               <div className="category__data">
-                <img src={ice.src} alt="" className="category__img" />
+                <img src={ice.src} alt="icecream" className="category__img" />
                 <h3 className="category__title">DeFi Pulse Index</h3>
                 <p className="category__description">
                   Composition: UNI, LINK, MKR, FXS, SNX, CAKE, CRV, CVX, DYDX,
@@ -149,7 +149,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="category__data">
-                <img src={token.src} alt="" className="category__img" />
+                <img src={token.src} alt="icecream" className="category__img" />
                 <h3 className="category__title">Liquid Staking Index</h3>
                 <p className="category__description">
                   STETH, RETH, FRXETH, MSOL, SAVAX, AKRETH
@@ -183,7 +183,7 @@ export default function Home() {
             <img
               //   src="https://assets.codepen.io/7773162/about-img.png"
               src={ice.src}
-              alt=""
+              alt="icecream"
               className="about__img"
             />
           </div>
@@ -207,7 +207,7 @@ export default function Home() {
             >
               <img
                 src={coneA.src}
-                alt=""
+                alt="icecream"
                 className="about__img"
                 style={{
                   position: "absolute",
@@ -218,7 +218,7 @@ export default function Home() {
               />
               <img
                 src={coneB.src}
-                alt=""
+                alt="icecream"
                 className="about__img"
                 style={{
                   position: "absolute",

@@ -163,7 +163,7 @@ const ViewTokens = () => {
                 >
                   <img
                     src={"/images/xdc-icon_white.png"}
-                    alt=""
+                    alt="icecream"
                     className="new__img"
                   />
                   <br />
