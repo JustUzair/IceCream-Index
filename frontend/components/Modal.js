@@ -473,6 +473,7 @@ const Modal = ({ modal, setModal }) => {
               <img
                 src="https://styles.redditmedia.com/t5_49ct3d/styles/communityIcon_kwspuvye8at61.png"
                 className="spookyswap_icon"
+                img="icecream"
               />
               <br />
               <br />
