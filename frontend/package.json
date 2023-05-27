@@ -48,6 +48,6 @@
     "truffle-plugin-verify": "^0.5.15"
   },
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   }
 }
