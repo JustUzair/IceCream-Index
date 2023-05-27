@@ -44,7 +44,7 @@ export default function Home() {
                   control of your investments like never before.{" "}
                 </p>
                 <div className="home__buttons">
-                  <Link href="/create-index-token">
+                  <Link href="/create-index-token" passHref>
                     <Button color="dark" radius="md" size="lg">
                       Create Now
                     </Button>
@@ -258,7 +258,7 @@ export default function Home() {
         </section>
       </main>
 
-      <Link href="#" className="scrollup" id="scroll-up">
+      <Link href="#" className="scrollup" passHref id="scroll-up">
         &uarr;
       </Link>
     </>
