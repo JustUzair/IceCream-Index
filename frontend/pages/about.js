@@ -4,8 +4,7 @@ import Head from "next/head";
 import { Button } from "@mantine/core";
 import { motion } from "framer-motion";
 import { fadeInUp, routeAnimation, stagger } from "../utils/animations";
-import coneA from "../public/images/iceconea.png";
-import coneB from "../public/images/iceconeB.png";
+
 import Image from "next/image";
 const about = () => {
   return (
