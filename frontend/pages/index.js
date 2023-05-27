@@ -249,16 +249,14 @@ export default function Home() {
                 Check out our project links! <br />{" "}
               </h2>
               <a href="https://testnet.ftmscan.com/address/0x89d25B5Dd46Faab9D4cF506ae46675B6E6180546">
-                FTMScan Explorer
+                XDC Block Explorer
               </a>{" "}
               <br />
-              <a href="https://github.com/JoshWeb3/Pumpkin-Protocol">
+              <a href="https://github.com/JustUzair/IceCream-Index">
                 Github Repository
               </a>{" "}
               <br />
-              <a href="https://pumpkin-protocol-fantom.vercel.app/">
-                Deployment Link
-              </a>
+              <a href="https://ice-cream-index.vercel.app/">Deployment Link</a>
               {/* <Link href="/create-index-token">
                <Button color="dark" radius="md" size="lg">
                   Create Now
