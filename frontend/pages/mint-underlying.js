@@ -99,7 +99,7 @@ const MintUnderlying = () => {
   useEffect(() => {
     enableWeb3();
     authenticate();
-  }, [account, authenticate, enableWeb3]);
+  }, [account]);
 
   return (
     <>
