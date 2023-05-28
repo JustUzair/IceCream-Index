@@ -171,7 +171,7 @@ export default function Home() {
           <div className="about__container container grid">
             <div className="about__data">
               <h2 className="section__title about__title">
-                Integrated with Spookyswap
+                Integrated with XSwap
               </h2>
 
               <p
@@ -180,7 +180,7 @@ export default function Home() {
                   color: "#b8add2",
                 }}
               >
-                Our platform seamlessly integrates with SpookySwap, a leading
+                Our platform seamlessly integrates with XSwap, a leading
                 decentralized exchange for trading cryptocurrencies. With
                 XSwap&apos;s secure and efficient trading infrastructure, you
                 can easily buy and sell the underlying tokens that compose your
