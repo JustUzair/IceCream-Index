@@ -38,10 +38,9 @@ const about = () => {
             </p>
 
             <Button color="dark" radius="md" size="lg">
-              <Link
-                href="https://github.com/JustUzair/XSwap-Index"
-                passHref
-              ></Link>
+              <Link href="https://github.com/JustUzair/XSwap-Index" passHref>
+                View On Github
+              </Link>
             </Button>
           </div>
           <div
