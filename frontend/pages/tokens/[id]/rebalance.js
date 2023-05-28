@@ -75,10 +75,10 @@ const Rebalance = () => {
         ]
       : null;
 
-  const PumpkinAddress =
+  const XSwapIndexAddress =
     chainId in contractAddresses
-      ? contractAddresses[chainId]["PumpkinAddress"][
-          contractAddresses[chainId]["PumpkinAddress"].length - 1
+      ? contractAddresses[chainId]["XSwapIndexAddress"][
+          contractAddresses[chainId]["XSwapIndexAddress"].length - 1
         ]
       : null;
 
@@ -297,7 +297,7 @@ const Rebalance = () => {
       runContractFunction({
         params: {
           abi: PUMPKIN_ABI,
-          contractAddress: PumpkinAddress, // specify the networkId
+          contractAddress: XSwapIndexAddress, // specify the networkId
           functionName: "getAllUnderlying",
           params: {
             _indexAddress: _tokenAddress,
@@ -317,7 +317,7 @@ const Rebalance = () => {
       runContractFunction({
         params: {
           abi: PUMPKIN_ABI,
-          contractAddress: PumpkinAddress, // specify the networkId
+          contractAddress: XSwapIndexAddress, // specify the networkId
           functionName: "getAllPercentages",
           params: {
             _indexAddress: _tokenAddress,
@@ -373,7 +373,7 @@ const Rebalance = () => {
       runContractFunction({
         params: {
           abi: PUMPKIN_ABI,
-          contractAddress: PumpkinAddress, // specify the networkId
+          contractAddress: XSwapIndexAddress, // specify the networkId
           functionName: "rebalance",
           params: {
             _tokenAddress: _tokenAddress,
@@ -420,318 +420,351 @@ const Rebalance = () => {
         </title>
       </Head>
 
-      <motion.div
-        variants={routeAnimation}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        className="index-token--container"
-      >
-        {/* ------------------Get Token Address ------------------*/}
-        <fieldset>
-          <legend>Re-balance</legend>
-          <h3
-            style={{
-              color: "#b8add2",
-            }}
-          >
-            🍱 Change portions of each asset
-          </h3>
-          <br />
-          <div className="index-token">
-            <div className="token-label--container">
-              <label className="token-name--label">Token Address - </label>
-            </div>
-            <div className="token-slider">
-              <input
-                required
-                type="text"
-                className="token-name"
-                id="token-name"
-                placeholder="0x..."
-                value={_tokenAddress ? _tokenAddress : ""}
-                disabled={true}
-              />
-            </div>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Index Composition</legend>
-          <div>
+      {XSwapIndexAddress != null ? (
+        <motion.div
+          variants={routeAnimation}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="index-token--container"
+        >
+          {/* ------------------Get Token Address ------------------*/}
+          <fieldset>
+            <legend>Re-balance</legend>
             <h3
               style={{
                 color: "#b8add2",
               }}
             >
-              {" "}
-              Tokens / Tokens Ratios (Click Token Address to Copy)
-            </h3>{" "}
+              🍱 Change portions of each asset
+            </h3>
             <br />
-            {/* {underlyingTokens.join("\r\n")} */}
-            {underlyingTokens.length > 0 &&
-              tokenRatios.length > 0 &&
-              underlyingTokens.map((token, index) => (
-                <>
-                  <span key={index}>
-                    <span
-                      style={{
-                        color: "#ffc800",
-                        cursor: "pointer",
-                      }}
-                      title={token}
-                      onClick={e => {
-                        navigator.clipboard.writeText(token);
-                        successNotification(`Copied To Clipboard`);
-                      }}
-                    >
-                      {token.substr(0, 4) + "..." + token.substr(-4)} :{" "}
-                    </span>
+            <div className="index-token">
+              <div className="token-label--container">
+                <label className="token-name--label">Token Address - </label>
+              </div>
+              <div className="token-slider">
+                <input
+                  required
+                  type="text"
+                  className="token-name"
+                  id="token-name"
+                  placeholder="0x..."
+                  value={_tokenAddress ? _tokenAddress : ""}
+                  disabled={true}
+                />
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Index Composition</legend>
+            <div>
+              <h3
+                style={{
+                  color: "#b8add2",
+                }}
+              >
+                {" "}
+                Tokens / Tokens Ratios (Click Token Address to Copy)
+              </h3>{" "}
+              <br />
+              {/* {underlyingTokens.join("\r\n")} */}
+              {underlyingTokens.length > 0 &&
+                tokenRatios.length > 0 &&
+                underlyingTokens.map((token, index) => (
+                  <>
+                    <span key={index}>
+                      <span
+                        style={{
+                          color: "#ffc800",
+                          cursor: "pointer",
+                        }}
+                        title={token}
+                        onClick={e => {
+                          navigator.clipboard.writeText(token);
+                          successNotification(`Copied To Clipboard`);
+                        }}
+                      >
+                        {token.substr(0, 4) + "..." + token.substr(-4)} :{" "}
+                      </span>
 
-                    <span
-                      style={{
-                        color: "#f8567f",
-                      }}
-                    >
-                      {parseFloat(
-                        ethers.utils.formatEther(
-                          tokenRatios[index].toString()
-                        ) * 100
-                      ).toFixed(2)}
-                      %
+                      <span
+                        style={{
+                          color: "#f8567f",
+                        }}
+                      >
+                        {parseFloat(
+                          ethers.utils.formatEther(
+                            tokenRatios[index].toString()
+                          ) * 100
+                        ).toFixed(2)}
+                        %
+                      </span>
                     </span>
+                    <br />
+                  </>
+                ))}
+            </div>
+            <br />
+            <br />
+          </fieldset>
+          <fieldset>
+            <legend> Amounts </legend>
+            <div>
+              <div className="index-token">
+                <div className="token-label--container">
+                  <label className="token-name--label">
+                    Asset to Sell - ⬆️{" "}
+                  </label>
+                </div>
+                <div className="token-slider">
+                  <input
+                    required
+                    type="text"
+                    className="token-count--address"
+                    id="token-name"
+                    placeholder="0x..."
+                    onChange={e => {
+                      setSellTokenAddress(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="index-token">
+                <div className="token-label--container">
+                  <label className="token-name--label">Amount to sell - </label>
+                </div>
+                <div className="token-slider">
+                  <input
+                    required
+                    type="text"
+                    className="token-count--address"
+                    id="token-name"
+                    placeholder="0"
+                    onChange={e => {
+                      setSellAmount(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="index-token">
+                <div className="token-label--container">
+                  <label className="token-name--label">Asset to buy - ⬇️</label>
+                </div>
+                <div className="token-slider">
+                  <input
+                    required
+                    type="text"
+                    className="token-count--address"
+                    id="token-name"
+                    placeholder="0x..."
+                    onChange={e => {
+                      setBuyTokenAddress(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            Integrated with XSwap{" "}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/xdc-icon_white.png"
+              className="spookyswap_icon"
+              alt="xswap-index"
+            />
+            <br />
+            <br />
+          </fieldset>
+
+          <fieldset>
+            <legend> Actions </legend>
+            <div
+              className="index-token"
+              style={{
+                textAlign: "center",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              <div className="token-addresses">
+                <span
+                  style={{
+                    fontWeight: "bold",
+                    marginBottom: "50px",
+                  }}
+                >
+                  Import the mock tokens from the contracts below
+                </span>
+                <br />
+                <span>
+                  {" "}
+                  <span
+                    style={{
+                      color: "#ffc700",
+                    }}
+                  >
+                    USDC
+                  </span>{" "}
+                  -{" "}
+                  <span
+                    style={{
+                      color: "#f8567f",
+                    }}
+                  >
+                    {USDCAddress}
                   </span>
-                  <br />
-                </>
-              ))}
-          </div>
-          <br />
-          <br />
-        </fieldset>
-        <fieldset>
-          <legend> Amounts </legend>
-          <div>
-            <div className="index-token">
-              <div className="token-label--container">
-                <label className="token-name--label">Asset to Sell - ⬆️ </label>
-              </div>
-              <div className="token-slider">
-                <input
-                  required
-                  type="text"
-                  className="token-count--address"
-                  id="token-name"
-                  placeholder="0x..."
-                  onChange={e => {
-                    setSellTokenAddress(e.target.value);
-                  }}
-                />
+                </span>{" "}
+                <br />
+                <span>
+                  {" "}
+                  <span
+                    style={{
+                      color: "#ffc700",
+                    }}
+                  >
+                    WETH
+                  </span>{" "}
+                  -{" "}
+                  <span
+                    style={{
+                      color: "#f8567f",
+                    }}
+                  >
+                    {WETHAddress}
+                  </span>
+                </span>{" "}
+                <br />
+                <span>
+                  {" "}
+                  <span
+                    style={{
+                      color: "#ffc700",
+                    }}
+                  >
+                    WTBC
+                  </span>{" "}
+                  -{" "}
+                  <span
+                    style={{
+                      color: "#f8567f",
+                    }}
+                  >
+                    {WBTCAddress}
+                  </span>
+                </span>{" "}
+                <br />
+                <span>
+                  {" "}
+                  <span
+                    style={{
+                      color: "#ffc700",
+                    }}
+                  >
+                    FTM
+                  </span>{" "}
+                  -{" "}
+                  <span
+                    style={{
+                      color: "#f8567f",
+                    }}
+                  >
+                    {WFTMAddress}
+                  </span>
+                </span>{" "}
+                <br />
+                <span>
+                  {" "}
+                  <span
+                    style={{
+                      color: "#ffc700",
+                    }}
+                  >
+                    AAVE
+                  </span>{" "}
+                  -{" "}
+                  <span
+                    style={{
+                      color: "#f8567f",
+                    }}
+                  >
+                    {AAVEAddress}
+                  </span>
+                </span>{" "}
+                <br />
               </div>
             </div>
-          </div>
-          <div>
-            <div className="index-token">
-              <div className="token-label--container">
-                <label className="token-name--label">Amount to sell - </label>
-              </div>
-              <div className="token-slider">
-                <input
-                  required
-                  type="text"
-                  className="token-count--address"
-                  id="token-name"
-                  placeholder="0"
-                  onChange={e => {
-                    setSellAmount(e.target.value);
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-evenly",
+              }}
+            >
+              <Button
+                variant="light"
+                color="indigo"
+                onClick={rebalanceIndexToken}
+              >
+                <span
+                  className="create-token--btn"
+                  style={{
+                    fontSize: "1.5rem",
+                    textDecoration: "none !important",
+                    display: "flex",
+                    alignItems: "center",
+                    color: "white",
                   }}
-                />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="index-token">
-              <div className="token-label--container">
-                <label className="token-name--label">Asset to buy - ⬇️</label>
-              </div>
-              <div className="token-slider">
-                <input
-                  required
-                  type="text"
-                  className="token-count--address"
-                  id="token-name"
-                  placeholder="0x..."
-                  onChange={e => {
-                    setBuyTokenAddress(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-          Integrated with XSwap{" "}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/xdc-icon_white.png"
-            className="spookyswap_icon"
-            alt="icecream"
-          />
-          <br />
-          <br />
-        </fieldset>
-
-        <fieldset>
-          <legend> Actions </legend>
+                >
+                  <IoIosCreate></IoIosCreate>
+                  <span
+                    style={{
+                      marginRight: "10px",
+                    }}
+                  ></span>
+                  Update Token
+                </span>
+              </Button>
+            </span>
+            <br />
+            <br />
+          </fieldset>
+        </motion.div>
+      ) : (
+        <>
           <div
-            className="index-token"
             style={{
-              textAlign: "center",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              flexDirection: "column",
+              width: "80%",
+              height: "100%",
+              zIndex: "99",
+              color: "white",
+              fontSize: "2rem",
+              wordWrap: "break-word",
+              margin: "0 auto",
+              padding: " 50px 10px",
+              marginTop: "236px",
             }}
           >
-            <div className="token-addresses">
-              <span
-                style={{
-                  fontWeight: "bold",
-                  marginBottom: "50px",
-                }}
-              >
-                Import the mock tokens from the contracts below
-              </span>
-              <br />
-              <span>
-                {" "}
-                <span
-                  style={{
-                    color: "#ffc700",
-                  }}
-                >
-                  USDC
-                </span>{" "}
-                -{" "}
-                <span
-                  style={{
-                    color: "#f8567f",
-                  }}
-                >
-                  {USDCAddress}
-                </span>
-              </span>{" "}
-              <br />
-              <span>
-                {" "}
-                <span
-                  style={{
-                    color: "#ffc700",
-                  }}
-                >
-                  WETH
-                </span>{" "}
-                -{" "}
-                <span
-                  style={{
-                    color: "#f8567f",
-                  }}
-                >
-                  {WETHAddress}
-                </span>
-              </span>{" "}
-              <br />
-              <span>
-                {" "}
-                <span
-                  style={{
-                    color: "#ffc700",
-                  }}
-                >
-                  WTBC
-                </span>{" "}
-                -{" "}
-                <span
-                  style={{
-                    color: "#f8567f",
-                  }}
-                >
-                  {WBTCAddress}
-                </span>
-              </span>{" "}
-              <br />
-              <span>
-                {" "}
-                <span
-                  style={{
-                    color: "#ffc700",
-                  }}
-                >
-                  FTM
-                </span>{" "}
-                -{" "}
-                <span
-                  style={{
-                    color: "#f8567f",
-                  }}
-                >
-                  {WFTMAddress}
-                </span>
-              </span>{" "}
-              <br />
-              <span>
-                {" "}
-                <span
-                  style={{
-                    color: "#ffc700",
-                  }}
-                >
-                  AAVE
-                </span>{" "}
-                -{" "}
-                <span
-                  style={{
-                    color: "#f8567f",
-                  }}
-                >
-                  {AAVEAddress}
-                </span>
-              </span>{" "}
-              <br />
-            </div>
-          </div>
-          <span
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <Button
-              variant="light"
-              color="indigo"
-              onClick={rebalanceIndexToken}
+            <span
+              style={{
+                background: "#FF494A",
+                padding: "10px 25px",
+                borderRadius: "20px",
+              }}
             >
-              <span
-                className="create-token--btn"
-                style={{
-                  fontSize: "1.5rem",
-                  textDecoration: "none !important",
-                  display: "flex",
-                  alignItems: "center",
-                  color: "white",
-                }}
-              >
-                <IoIosCreate></IoIosCreate>
-                <span
-                  style={{
-                    marginRight: "10px",
-                  }}
-                ></span>
-                Update Token
-              </span>
-            </Button>
-          </span>
-          <br />
-          <br />
-        </fieldset>
-      </motion.div>
+              No contract found on this network!!!
+            </span>
+          </div>
+        </>
+      )}
     </>
   );
 };

@@ -27,10 +27,10 @@ const RedeemTokens = () => {
   const { chainId: chainIdHex } = useMoralis();
   const chainId = parseInt(chainIdHex);
 
-  const PumpkinAddress =
+  const XSwapIndexAddress =
     chainId in contractAddresses
-      ? contractAddresses[chainId]["PumpkinAddress"][
-          contractAddresses[chainId]["PumpkinAddress"].length - 1
+      ? contractAddresses[chainId]["XSwapIndexAddress"][
+          contractAddresses[chainId]["XSwapIndexAddress"].length - 1
         ]
       : null;
 
@@ -57,7 +57,7 @@ const RedeemTokens = () => {
       runContractFunction({
         params: {
           abi: PUMPKIN_ABI,
-          contractAddress: PumpkinAddress, // specify the networkId
+          contractAddress: XSwapIndexAddress, // specify the networkId
           functionName: "getAmountOfIndexTokens",
           params: {
             _creator: account,
@@ -80,7 +80,7 @@ const RedeemTokens = () => {
       runContractFunction({
         params: {
           abi: PUMPKIN_ABI,
-          contractAddress: PumpkinAddress, // specify the networkId
+          contractAddress: XSwapIndexAddress, // specify the networkId
           functionName: "redeemToken",
           params: {
             _tokenAddress: _tokenAddress,
@@ -119,70 +119,71 @@ const RedeemTokens = () => {
         </title>
       </Head>
 
-      <motion.div
-        className="index-token--container"
-        variants={routeAnimation}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-      >
-        <fieldset>
-          <legend
-            style={{
-              color: "#b8add2",
-            }}
-          >
-            Redeem
-          </legend>
-          <h3
-            style={{
-              color: "#b8add2",
-            }}
-          >
-            🔥 Burn index tokens and receive the underlying assets
-          </h3>
-          <br />
-        </fieldset>
+      {XSwapIndexAddress != null ? (
+        <motion.div
+          className="index-token--container"
+          variants={routeAnimation}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+        >
+          <fieldset>
+            <legend
+              style={{
+                color: "#b8add2",
+              }}
+            >
+              Redeem
+            </legend>
+            <h3
+              style={{
+                color: "#b8add2",
+              }}
+            >
+              🔥 Burn index tokens and receive the underlying assets
+            </h3>
+            <br />
+          </fieldset>
 
-        {/* ------------------Get Token Address ------------------*/}
-        <fieldset>
-          <legend>Token Info</legend>
+          {/* ------------------Get Token Address ------------------*/}
+          <fieldset>
+            <legend>Token Info</legend>
 
-          <div className="index-token">
-            <div className="token-label--container">
-              <label className="token-name--label">Token Address - </label>
+            <div className="index-token">
+              <div className="token-label--container">
+                <label className="token-name--label">Token Address - </label>
+              </div>
+              <div className="token-slider">
+                <input
+                  required
+                  type="text"
+                  className="token-count--address"
+                  id="token-name"
+                  placeholder="0x..."
+                  value={_tokenAddress}
+                  disabled={true}
+                />
+              </div>
             </div>
-            <div className="token-slider">
-              <input
-                required
-                type="text"
-                className="token-count--address"
-                id="token-name"
-                placeholder="0x..."
-                value={_tokenAddress}
-                disabled={true}
-              />
-            </div>
-          </div>
-          <div className="index-token">
-            <div className="token-label--container">
-              <label className="token-name--label">
-                Amount to be redeemed -{" "}
-              </label>
-            </div>
-            <div className="token-slider">
-              <input
-                required
-                type="number"
-                className="token-name"
-                id="token-name"
-                placeholder="1"
-                onChange={e => {
-                  setTokenRedeemAmount(e.target.value);
-                }}
-                value={tokenRedeemAmount}
-              />
-              {/* <br />
+            <div className="index-token">
+              <div className="token-label--container">
+                <label className="token-name--label">
+                  Amount to be redeemed -{" "}
+                </label>
+              </div>
+              <div className="token-slider">
+                <input
+                  required
+                  type="number"
+                  className="token-name"
+                  id="token-name"
+                  placeholder="1"
+                  onChange={e => {
+                    setTokenRedeemAmount(e.target.value);
+                  }}
+                  value={tokenRedeemAmount}
+                />
+                {/* <br />
               <span
                 style={{
                   fontSize: "12px",
@@ -201,43 +202,73 @@ const RedeemTokens = () => {
               >
                 Redeem All ?
               </span>{" "} */}
+              </div>
             </div>
-          </div>
 
-          <br />
-          <span
+            <br />
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-evenly",
+              }}
+            >
+              <Button variant="light" color="indigo" onClick={redeemToken}>
+                <span
+                  className="create-token--btn"
+                  style={{
+                    fontSize: "1.5rem",
+                    textDecoration: "none !important",
+                    display: "flex",
+                    alignItems: "center",
+                    color: "white",
+                  }}
+                >
+                  <IoIosCreate></IoIosCreate>
+                  <span
+                    style={{
+                      marginRight: "10px",
+                    }}
+                  ></span>
+                  Submit
+                </span>
+              </Button>
+            </span>
+            <br />
+            <br />
+          </fieldset>
+          {/* {ethers.utils.parseUnits(tokenAmount.toString(), "ether").toString()} */}
+        </motion.div>
+      ) : (
+        <>
+          <div
             style={{
               display: "flex",
+              justifyContent: "center",
               alignItems: "center",
-              justifyContent: "space-evenly",
+              width: "80%",
+              height: "100%",
+              zIndex: "99",
+              color: "white",
+              fontSize: "2rem",
+              wordWrap: "break-word",
+              margin: "0 auto",
+              padding: " 50px 10px",
+              marginTop: "236px",
             }}
           >
-            <Button variant="light" color="indigo" onClick={redeemToken}>
-              <span
-                className="create-token--btn"
-                style={{
-                  fontSize: "1.5rem",
-                  textDecoration: "none !important",
-                  display: "flex",
-                  alignItems: "center",
-                  color: "white",
-                }}
-              >
-                <IoIosCreate></IoIosCreate>
-                <span
-                  style={{
-                    marginRight: "10px",
-                  }}
-                ></span>
-                Submit
-              </span>
-            </Button>
-          </span>
-          <br />
-          <br />
-        </fieldset>
-        {/* {ethers.utils.parseUnits(tokenAmount.toString(), "ether").toString()} */}
-      </motion.div>
+            <span
+              style={{
+                background: "#FF494A",
+                padding: "10px 25px",
+                borderRadius: "20px",
+              }}
+            >
+              No contract found on this network!!!
+            </span>
+          </div>
+        </>
+      )}
     </>
   );
 };

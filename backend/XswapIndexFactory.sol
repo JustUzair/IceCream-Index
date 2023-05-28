@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./IndexTokenNew.sol";
 
-contract PumpkinFactory {
+contract XSwapFactory {
 
     mapping(address => mapping(uint => address)) public addressToTokens;
     mapping(address => uint) tokenCount;

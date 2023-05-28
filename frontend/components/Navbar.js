@@ -14,14 +14,18 @@ const Navbar = () => {
         }}
       >
         <Link href="/" className="nav__logo" passHref>
-          <p>
+          <p
+            style={{
+              cursor: "pointer",
+            }}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={"/images/icecream.png"}
+              src={"/images/xdc-icon_white.png"}
               className="pumpkin_icon"
-              alt="icecream"
+              alt="xswap-index"
             />
-            IceCream-Index
+            XSwap-Index
           </p>
         </Link>
         <div className="nav__menu" id="nav-menu">

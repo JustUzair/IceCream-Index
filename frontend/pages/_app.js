@@ -65,7 +65,7 @@ const { chains, provider } = configureChains(
   ]
 );
 const { connectors } = getDefaultWallets({
-  appName: "IceCream-Index",
+  appName: "XSwap-Index",
   chains,
 });
 const wagmiClient = createClient({

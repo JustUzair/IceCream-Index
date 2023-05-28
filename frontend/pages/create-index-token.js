@@ -24,10 +24,10 @@ const CreateIndexToken = () => {
   const { chainId: chainIdHex } = useMoralis();
   const chainId = parseInt(chainIdHex);
 
-  const PumpkinAddress =
+  const XSwapIndexAddress =
     chainId in contractAddresses
-      ? contractAddresses[chainId]["PumpkinAddress"][
-          contractAddresses[chainId]["PumpkinAddress"].length - 1
+      ? contractAddresses[chainId]["XSwapIndexAddress"][
+          contractAddresses[chainId]["XSwapIndexAddress"].length - 1
         ]
       : null;
   const [coinPriceData, setCoinPriceData] = useState({});
@@ -142,7 +142,7 @@ const CreateIndexToken = () => {
     runContractFunction({
       params: {
         abi: PUMPKIN_ABI,
-        contractAddress: PumpkinAddress, // specify the networkId
+        contractAddress: XSwapIndexAddress, // specify the networkId
         functionName: "createToken",
         params: {
           _tokens: utilityTokenAddress,
@@ -336,7 +336,7 @@ const CreateIndexToken = () => {
   }, []);
   return (
     <>
-      {PumpkinAddress != null ? (
+      {XSwapIndexAddress != null ? (
         <div className="index-token--container">
           <fieldset>
             <legend>Create an Index Token</legend>
@@ -392,7 +392,7 @@ const CreateIndexToken = () => {
                 <label className="token-label">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    alt="icecream"
+                    alt="xswap-index"
                     src="https://seeklogo.com/images/U/usd-coin-usdc-logo-CB4C5B1C51-seeklogo.com.png"
                     className="crypto_icon"
                   />
@@ -422,7 +422,7 @@ const CreateIndexToken = () => {
                   {" "}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    alt="icecream"
+                    alt="xswap-index"
                     src="https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.png"
                     className="crypto_icon"
                   />
@@ -452,7 +452,7 @@ const CreateIndexToken = () => {
                   {" "}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    alt="icecream"
+                    alt="xswap-index"
                     src="https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png"
                     className="crypto_icon"
                   />
@@ -482,7 +482,7 @@ const CreateIndexToken = () => {
                   {" "}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    alt="icecream"
+                    alt="xswap-index"
                     src="https://cryptologos.cc/logos/fantom-ftm-logo.png"
                     className="crypto_icon"
                   />
@@ -512,7 +512,7 @@ const CreateIndexToken = () => {
                   {" "}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    alt="icecream"
+                    alt="xswap-index"
                     src="https://cryptologos.cc/logos/aave-aave-logo.png"
                     className="crypto_icon"
                   />
@@ -549,7 +549,7 @@ const CreateIndexToken = () => {
                     {" "}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      alt="icecream"
+                      alt="xswap-index"
                       src="https://seeklogo.com/images/U/usd-coin-usdc-logo-CB4C5B1C51-seeklogo.com.png"
                       className="crypto_icon"
                     />
@@ -570,7 +570,7 @@ const CreateIndexToken = () => {
                     {" "}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      alt="icecream"
+                      alt="xswap-index"
                       src="https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.png"
                       className="crypto_icon"
                     />
@@ -591,7 +591,7 @@ const CreateIndexToken = () => {
                     {" "}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      alt="icecream"
+                      alt="xswap-index"
                       src="https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png"
                       className="crypto_icon"
                     />
@@ -612,7 +612,7 @@ const CreateIndexToken = () => {
                     {" "}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      alt="icecream"
+                      alt="xswap-index"
                       src="https://cryptologos.cc/logos/fantom-ftm-logo.png"
                       className="crypto_icon"
                     />
@@ -633,7 +633,7 @@ const CreateIndexToken = () => {
                     {" "}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      alt="icecream"
+                      alt="xswap-index"
                       src="https://cryptologos.cc/logos/aave-aave-logo.png"
                       className="crypto_icon"
                     />

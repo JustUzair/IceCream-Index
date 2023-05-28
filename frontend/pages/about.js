@@ -23,7 +23,7 @@ const about = () => {
         <div className="about__container container grid">
           <div className="about__data">
             <h2 className="section__title about__title">
-              About Ice-Cream <br /> Index{" "}
+              About XSwap <br /> Index{" "}
             </h2>
             <p className="about__description">
               This project was created during the Q1 Hackathon of 2023 hosted by

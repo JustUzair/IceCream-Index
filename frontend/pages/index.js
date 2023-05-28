@@ -18,7 +18,7 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={"/images/hero-home.png"}
-                  alt="icecream"
+                  alt="xswap-index"
                   className="home__img"
                 />
                 <div className="home__indicator"></div>
@@ -35,7 +35,7 @@ export default function Home() {
                 <h3 className="home__subtitle"></h3>
                 <h1 className="home__title">
                   Cryptocurrencies unite, <br />
-                  create a spooky <br />
+                  create a sexy <br />
                   index in sight!{" "}
                 </h1>
                 <p className="home__description">
@@ -130,7 +130,7 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={"/images/iceconea.png"}
-                  alt="icecream"
+                  alt="xswap-index"
                   className="category__img"
                 />
                 <h3 className="category__title">Metaverse Index</h3>
@@ -142,7 +142,7 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={"/images/ice.png"}
-                  alt="icecream"
+                  alt="xswap-index"
                   className="category__img"
                 />
                 <h3 className="category__title">DeFi Pulse Index</h3>
@@ -155,7 +155,7 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={"/images/tokens.png"}
-                  alt="icecream"
+                  alt="xswap-index"
                   className="category__img"
                 />
                 <h3 className="category__title">Liquid Staking Index</h3>
@@ -182,17 +182,16 @@ export default function Home() {
               >
                 Our platform seamlessly integrates with SpookySwap, a leading
                 decentralized exchange for trading cryptocurrencies. With
-                SpookySwap&apos;s secure and efficient trading infrastructure,
-                you can easily buy and sell the underlying tokens that compose
-                your custom index, and rebalance your portfolio whenever you
-                want.{" "}
+                XSwap&apos;s secure and efficient trading infrastructure, you
+                can easily buy and sell the underlying tokens that compose your
+                custom index, and rebalance your portfolio whenever you want.{" "}
               </p>
             </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               //   src="https://assets.codepen.io/7773162/about-img.png"
               src={"/images/ice.png"}
-              alt="icecream"
+              alt="xswap-index"
               className="about__img"
             />
           </div>
@@ -217,7 +216,7 @@ export default function Home() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={"/images/iceconea.png"}
-                alt="icecream"
+                alt="xswap-index"
                 className="about__img"
                 style={{
                   position: "absolute",
@@ -229,7 +228,7 @@ export default function Home() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={"/images/iceconeb.png"}
-                alt="icecream"
+                alt="xswap-index"
                 className="about__img"
                 style={{
                   position: "absolute",
@@ -248,20 +247,15 @@ export default function Home() {
               >
                 Check out our project links! <br />{" "}
               </h2>
-              <a href="https://testnet.ftmscan.com/address/0x89d25B5Dd46Faab9D4cF506ae46675B6E6180546">
+              <a href="https://apothem.xinfinscan.com/address/0xFd2bE2Db1D25282c81c44E27Aaa61B43548e0f70#transactions">
                 XDC Block Explorer
               </a>{" "}
               <br />
-              <a href="https://github.com/JustUzair/IceCream-Index">
+              <a href="https://github.com/JustUzair/XSwap-Index">
                 Github Repository
               </a>{" "}
               <br />
-              <a href="https://ice-cream-index.vercel.app/">Deployment Link</a>
-              {/* <Link href="/create-index-token">
-               <Button color="dark" radius="md" size="lg">
-                  Create Now
-                </Button>
-              </Link>*/}
+              <a href="https://xswap-index.vercel.app/">Deployment Link</a>
             </div>
           </div>
         </section>

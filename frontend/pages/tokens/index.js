@@ -48,10 +48,10 @@ const ViewTokens = () => {
   const { chainId: chainIdHex } = useMoralis();
   const chainId = parseInt(chainIdHex);
 
-  const PumpkinAddress =
+  const XSwapIndexAddress =
     chainId in contractAddresses
-      ? contractAddresses[chainId]["PumpkinAddress"][
-          contractAddresses[chainId]["PumpkinAddress"].length - 1
+      ? contractAddresses[chainId]["XSwapIndexAddress"][
+          contractAddresses[chainId]["XSwapIndexAddress"].length - 1
         ]
       : null;
   const getNames = async () => {
@@ -60,7 +60,7 @@ const ViewTokens = () => {
       runContractFunction({
         params: {
           abi: PUMPKIN_ABI,
-          contractAddress: PumpkinAddress,
+          contractAddress: XSwapIndexAddress,
           functionName: "getAllNames",
           params: {
             _creator: account,
@@ -80,7 +80,7 @@ const ViewTokens = () => {
       runContractFunction({
         params: {
           abi: PUMPKIN_ABI,
-          contractAddress: PumpkinAddress,
+          contractAddress: XSwapIndexAddress,
           functionName: "getAllSymbols",
           params: {
             _creator: account,
@@ -94,13 +94,13 @@ const ViewTokens = () => {
     }
   };
   const getIndexTokens = async () => {
-    if (PumpkinAddress == null) return;
+    if (XSwapIndexAddress == null) return;
     if (!isWeb3Enabled) enableWeb3();
     if (account) {
       await runContractFunction({
         params: {
           abi: PUMPKIN_ABI,
-          contractAddress: PumpkinAddress,
+          contractAddress: XSwapIndexAddress,
           functionName: "getAllTokenAddresses",
           params: {
             _creator: account,
@@ -135,7 +135,7 @@ const ViewTokens = () => {
           {account != null && account.substr(0, 4) + "..." + account.substr(-4)}
         </title>
       </Head>
-      {PumpkinAddress != null ? (
+      {XSwapIndexAddress != null ? (
         <>
           {/* <Modal setModal={setModal} modal={modal}></Modal>
           <TokenCountModal
@@ -168,7 +168,7 @@ const ViewTokens = () => {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={"/images/xdc-icon_white.png"}
-                    alt="icecream"
+                    alt="xswap-index"
                     className="new__img"
                   />
                   <br />

@@ -1,6 +1,6 @@
-# Deployed URL : [LIVE WEBSITE](https://pumpkin-protocol-fantom.vercel.app)
+# Deployed URL : [LIVE WEBSITE](https://xswap-index.vercel.app)
 
-# 🍧IceCream-Index 🍧
+# ✖ XSwap-Index ✖
 
 ## What is an index token?
 
@@ -8,7 +8,7 @@
 
 ## Inspiration
 
-##### 👻 Fantom network currently does not have any Index Tokens.
+##### 👻 XDC network currently does not have any Index Tokens.
 
 ##### 🧟 We took inspiration from [TokenSets / Set Protocol](https://www.tokensets.com/) and recreated it without any fees.
 
@@ -28,21 +28,21 @@
 
 ##### 🕯️ Wrote the solidity smart contract from the ground up
 
-##### ✨ Integrated [SpookySwap](https://spooky.fi/#/) for token rebalancing
+##### ✨ Integrated [XSwap](https://app.xspswap.finance/) for token rebalancing
 
-##### 🧪 Tested by forking Fantom Mainnet using Hardhat
+##### 🧪 Tested by forking XDC Mainnet using Hardhat
 
-## What's next for Pumpkin Index
+## What's next for XSwap Index
 
 ##### 🍂Gas optimization
 
 ##### 🐺 Security Auditing
 
-# Try the website on fantom testnet
+# Try the website on XDC apothem testnet
 
 #### 1. Mint Test Tokens
 
-1. Click "Utility Faucet" to mint test erc20's to interact with pumpkin. <br/>
+1. Click "Utility Faucet" to mint test erc20's to interact with xswap-index. <br/>
 2. Click the 'Mint Utility Tokens' button to start the transaction. 1000 USDC, WETH, WBTC, WFTM, and AAVE will be sent to your wallet.
 
 #### 2. Try Creating a Token
@@ -60,7 +60,7 @@
 2. Click the "Issue Tokens" button to issue new Index Tokens. <br/>
 3. Paste the contract address, and then an amount, try around 100 tokens or so <br/>
 4. Click "Approve Tokens" to approve all the ERC20's that make up your index token. Accept all transactions (will be 1-5 transactions) <br/>
-5. If sucessfully approved, you should be able to click the "Mint Tokens" button to issue new tokens.
+5. If successfully approved, you should be able to click the "Mint Tokens" button to issue new tokens.
 
 ## (NOTE - SOMETIMES DUE TO DELAY IN FETCHING USER MIGHT NEED TO RE-CLICK THE APPROVE BUTTON)
 
@@ -78,6 +78,6 @@
 3. Enter the amount of tokens you want to burn <br/>
 4. Press submit, you should see index tokens being burned, and underlying tokens being sent to you.
 
-#### 7. Rebalancing
+#### 7. Re-balancing
 
-since this design is designed for the Fantom mainnet, it will not work on testnet so we have disabled this button.
+since this design is designed for the XDC mainnet, it will not work on testnet so we have disabled this button.
