@@ -202,7 +202,7 @@ export default function Home() {
           <div
             className="discount__container container grid"
             style={{
-              background: "#27262c !important",
+              background: "#27262c",
             }}
           >
             <div
