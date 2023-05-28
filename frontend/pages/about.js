@@ -26,19 +26,22 @@ const about = () => {
               About XSwap <br /> Index{" "}
             </h2>
             <p className="about__description">
-              This project was created during the Q1 Hackathon of 2023 hosted by
-              Fantom. Our team identified a gap in the Fantom ecosystem - the
-              absence of index tokens. After conducting thorough research, we
-              developed a solution to address this need.
+              This project was created during the Web3athon 2023 on Hackerearth.
+              Our team identified a gap in the Fantom ecosystem - the absence of
+              index tokens. After conducting thorough research, we developed a
+              solution to address this need.
               <br />
-              Our innovation provides a valuable contribution to the Fantom
+              Our innovation provides a valuable contribution to the XDC/XinFin
               community by filling this gap and offering a new option for users.
               We are excited to share our project with others and look forward
               to its impact on the ecosystem.{" "}
             </p>
 
             <Button color="dark" radius="md" size="lg">
-              See Devpost
+              <Link
+                href="https://github.com/JustUzair/XSwap-Index"
+                passHref
+              ></Link>
             </Button>
           </div>
           <div

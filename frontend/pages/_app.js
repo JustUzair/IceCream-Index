@@ -56,7 +56,7 @@ const xdcChain = {
   testnet: false,
 };
 const { chains, provider } = configureChains(
-  [xdcTestnetChain, xdcChain, fantom, fantomTestnet],
+  [xdcTestnetChain, xdcChain],
   [
     jsonRpcProvider({
       rpc: chain => ({ http: chain.rpcUrls.default.http[0] }),
