@@ -35,7 +35,7 @@ export default function Home() {
                 <h3 className="home__subtitle"></h3>
                 <h1 className="home__title">
                   Cryptocurrencies unite, <br />
-                  create a sexy <br />
+                  create a crypto <br />
                   index in sight!{" "}
                 </h1>
                 <p className="home__description">
