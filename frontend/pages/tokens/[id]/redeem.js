@@ -161,7 +161,6 @@ const RedeemTokens = () => {
                   id="token-name"
                   placeholder="0x..."
                   value={_tokenAddress}
-                  disabled={true}
                 />
               </div>
             </div>

@@ -651,7 +651,6 @@ const IssueTokens = () => {
                   className="token-count--address"
                   id="token-name"
                   value={_tokenAddress ? _tokenAddress : ""}
-                  disabled={true}
                 />
               </div>
             </div>
