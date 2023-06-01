@@ -454,6 +454,33 @@ const Rebalance = () => {
                   disabled={true}
                 />
               </div>
+              <Button
+                variant="light"
+                color="indigo"
+                onClick={e => {
+                  getUnderlyingTokens();
+                  getUnderlyingTokenRatios();
+                }}
+              >
+                <span
+                  className="create-token--btn"
+                  style={{
+                    fontSize: "1.5rem",
+                    textDecoration: "none !important",
+                    display: "flex",
+                    alignItems: "center",
+                    color: "white",
+                  }}
+                >
+                  <IoIosCreate></IoIosCreate>
+                  <span
+                    style={{
+                      marginRight: "10px",
+                    }}
+                  ></span>
+                  Load
+                </span>
+              </Button>
             </div>
           </fieldset>
           <fieldset>
