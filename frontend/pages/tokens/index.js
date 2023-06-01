@@ -186,7 +186,7 @@ const ViewTokens = () => {
                       className="new__subtitle index-token--address"
                       title={`Copy To Clipboard : ${item}`}
                       onClick={e => {
-                        navigator.clipboard.writeText(e.target.innerHTML);
+                        navigator.clipboard.writeText(item);
                         successNotification(`Copied To Clipboard`);
                       }}
                       style={{

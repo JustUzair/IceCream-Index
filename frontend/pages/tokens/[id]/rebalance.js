@@ -451,6 +451,7 @@ const Rebalance = () => {
                   id="token-name"
                   placeholder="0x..."
                   value={_tokenAddress ? _tokenAddress : ""}
+                  disabled={true}
                 />
               </div>
               <Button
