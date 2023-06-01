@@ -11,7 +11,6 @@ import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { NotificationProvider } from "web3uikit";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { fantom, fantomTestnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { MoralisProvider } from "react-moralis";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";

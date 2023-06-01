@@ -27,7 +27,7 @@ const about = () => {
             </h2>
             <p className="about__description">
               This project was created during the Web3athon 2023 on Hackerearth.
-              Our team identified a gap in the Fantom ecosystem - the absence of
+              Our team identified a gap in the XDC ecosystem - the absence of
               index tokens. After conducting thorough research, we developed a
               solution to address this need.
               <br />
