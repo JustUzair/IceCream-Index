@@ -56,27 +56,23 @@
 
 #### 4. Try Issuing Tokens
 
-1. Copy your index token contract address, <br/>
-2. Click the "Issue Tokens" button to issue new Index Tokens. <br/>
-3. Paste the contract address, and then an amount, try around 100 tokens or so <br/>
-4. Click "Approve Tokens" to approve all the ERC20's that make up your index token. Accept all transactions (will be 1-5 transactions) <br/>
-5. If successfully approved, you should be able to click the "Mint Tokens" button to issue new tokens.
+1. Click the "Issue Tokens" button to issue new Index Tokens. <br/>
+2. Enter the amount to issue
+3. Click "Approve Tokens" to approve all the ERC20's that make up your index token. Accept all transactions (will be 1-5 transactions) <br/>
+4. If successfully approved, you should be able to click the "Mint Tokens" button to issue new tokens.
 
 ## (NOTE - SOMETIMES DUE TO DELAY IN FETCHING USER MIGHT NEED TO RE-CLICK THE APPROVE BUTTON)
 
 #### 5. Try Claiming Streaming Fee
 
 1. Issue an index token on two or more different addresses <br/>
-2. Click the "Claim Fee" Button. <br/>
-3. Paste the index token address into the field <br/>
-4. Click the "Claim Fee" button to confirm taking the streaming fee. There should be 1% tokens burned from all wallets and 1% minted to the creator's address.
+2. Click the "Claim Fee" button to confirm taking the streaming fee. There should be 1% tokens burned from all wallets and 1% minted to the creator's address.
 
 #### 6. Try Redeeming Tokens
 
 1. Click "Redeem Tokens" <br/>
-2. Paste the address of the index token you want to redeem in the field. <br/>
-3. Enter the amount of tokens you want to burn <br/>
-4. Press submit, you should see index tokens being burned, and underlying tokens being sent to you.
+2. Enter the amount of tokens you want to burn <br/>
+3. Press submit, you should see index tokens being burned, and underlying tokens being sent to you.
 
 #### 7. Re-balancing
 
